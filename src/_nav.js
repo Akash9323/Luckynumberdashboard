@@ -12,8 +12,9 @@ import {
    cilWallet,
    cibDashlane,
    //cilStore,
-   
-
+   cilBraille,
+   cilBasket,
+   cilSpeech,
   } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
 
@@ -50,7 +51,7 @@ const _nav = [
     component: CNavItem,
     name: 'Random Number',
     to: '/randomnumbers',
-    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+    icon: <CIcon icon={cilBraille} customClassName="nav-icon" />,
     badge: {
       color: 'info',
     },
@@ -59,7 +60,7 @@ const _nav = [
     component: CNavItem,
     name: 'Question',
     to: '/question',
-    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+    icon: <CIcon icon={cilSpeech} customClassName="nav-icon" />,
     badge: {
       color: 'info',
     },
@@ -68,7 +69,7 @@ const _nav = [
     component: CNavItem,
     name: 'Lucky Coin Store',
     to: '/luckycoinStore',
-    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+    icon: <CIcon icon={ cilBasket} customClassName="nav-icon" />,
     badge: {
       color: 'info',
     },

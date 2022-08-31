@@ -211,7 +211,7 @@ const Modals = () => {
                   <CButton color="secondary">A.Yogi Adityanath</CButton>
                   <CButton color="primary">B.Narendra Modi</CButton>
                   <CButton color="secondary">C.Rahul Gandhi</CButton>
-                  <CButton color="primary">D.Naveen Pattnaik</CButton>
+                  {/* <CButton color="primary">D.Naveen Pattnaik</CButton> */}
                 </CModalFooter>
               </CModal>
             {/* </DocsExample> */}
