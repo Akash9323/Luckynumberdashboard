@@ -1,5 +1,12 @@
 import React from 'react'
+import Luckycoinstore from './views/luckycoinstore/luckycoinstore'
+import Players from './views/player/player'
+import Profile from './views/profile/profile'
+import Question from './views/question/question'
+import Randomnumber from './views/randomnumber/randomnumber'
+import Region from './views/region/region'
 import Users from './views/user/users'
+import Wallet from './views/wallet/wallet'
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
@@ -55,6 +62,13 @@ const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
   { path: '/users', name: 'Users', element: Users },
+  { path: '/players', name: 'Players', element: Players },
+  { path: '/wallet', name: 'Wallet', element: Wallet },
+  { path: '/profile', name: 'Profile', element: Profile },
+  { path: '/region', name: 'Region', element: Region },
+  { path: '/randomnumbers', name: 'Randomnumbers', element: Randomnumber },
+  { path: '/question', name: 'Question', element: Question },
+  { path: '/luckycoinstore', name: 'Luckycoinstore', element: Luckycoinstore },
   { path: '/theme', name: 'Theme', element: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', element: Colors },
   { path: '/theme/typography', name: 'Typography', element: Typography },

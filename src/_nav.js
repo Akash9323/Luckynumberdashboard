@@ -25,8 +25,8 @@ const _nav = [
   },
   {
     component: CNavItem,
-    name: 'Player',
-    to: '/Player',
+    name: 'Players',
+    to: '/players',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
     badge: {
       color: 'info',
@@ -35,7 +35,7 @@ const _nav = [
   {
     component: CNavItem,
     name: 'Random Number',
-    to: '/Random Number',
+    to: '/randomnumbers',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
     badge: {
       color: 'info',
@@ -44,7 +44,7 @@ const _nav = [
   {
     component: CNavItem,
     name: 'Question',
-    to: '/Question',
+    to: '/question',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
     badge: {
       color: 'info',
@@ -53,7 +53,7 @@ const _nav = [
   {
     component: CNavItem,
     name: 'Lucky Coin Store',
-    to: '/Lucky Coin Store',
+    to: '/luckycoinStore',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
     badge: {
       color: 'info',
@@ -62,7 +62,25 @@ const _nav = [
   {
     component: CNavItem,
     name: 'Wallet',
-    to: '/Wallet',
+    to: '/wallet',
+    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+    badge: {
+      color: 'info',
+    },
+  },
+  {
+    component: CNavItem,
+    name: 'Region',
+    to: '/region',
+    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+    badge: {
+      color: 'info',
+    },
+  },
+  {
+    component: CNavItem,
+    name: 'Profile',
+    to: '/profile',
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
     badge: {
       color: 'info',
