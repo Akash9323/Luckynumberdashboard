@@ -1,6 +1,20 @@
+/* eslint-disable prettier/prettier */
+
 import React from 'react'
 import CIcon from '@coreui/icons-react'
-import { cilSpeedometer, cilStar } from '@coreui/icons'
+import { 
+  cilSpeedometer,
+   cilStar,
+   cilUser,
+   cilPeople ,
+   cilUserFollow,
+   cilChartPie,
+   cilWallet,
+   cibDashlane,
+   //cilStore,
+   
+
+  } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
 
 const _nav = [
@@ -8,7 +22,7 @@ const _nav = [
     component: CNavItem,
     name: 'Dashboard',
     to: '/dashboard',
-    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+    icon: <CIcon icon={cibDashlane} customClassName="nav-icon" />,
     badge: {
       color: 'info',
       text: 'NEW',
@@ -18,7 +32,7 @@ const _nav = [
     component: CNavItem,
     name: 'Users',
     to: '/users',
-    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+    icon: <CIcon icon={cilUser} customClassName="nav-icon" />,
     badge: {
       color: 'info',
     },
@@ -27,7 +41,7 @@ const _nav = [
     component: CNavItem,
     name: 'Players',
     to: '/players',
-    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+    icon: <CIcon icon={cilPeople} customClassName="nav-icon" />,
     badge: {
       color: 'info',
     },
@@ -63,7 +77,7 @@ const _nav = [
     component: CNavItem,
     name: 'Wallet',
     to: '/wallet',
-    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+    icon: <CIcon icon={cilWallet} customClassName="nav-icon" />,
     badge: {
       color: 'info',
     },
@@ -72,7 +86,7 @@ const _nav = [
     component: CNavItem,
     name: 'Region',
     to: '/region',
-    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+    icon: <CIcon icon={ cilChartPie} customClassName="nav-icon" />,
     badge: {
       color: 'info',
     },
@@ -81,7 +95,7 @@ const _nav = [
     component: CNavItem,
     name: 'Profile',
     to: '/profile',
-    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+    icon: <CIcon icon={cilUserFollow} customClassName="nav-icon" />,
     badge: {
       color: 'info',
     },
