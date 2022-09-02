@@ -34,6 +34,7 @@ import { DocsExample } from 'src/components'
 import WidgetsBrand from './WidgetsBrand'
 import WidgetsDropdown from './WidgetsDropdown'
 import WidgetsStore from './WidgetsStore'
+import WidgetsDash from './WidgetsDash'
 
 const Widgets = () => {
   const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
@@ -47,6 +48,9 @@ const Widgets = () => {
         </DocsExample>
         <DocsExample href="/components/widgets/#cwidgetstatsa">
           <WidgetsStore />
+        </DocsExample>
+        <DocsExample href="/components/widgets/#cwidgetstatsb">
+          <WidgetsDash />
         </DocsExample>
         <DocsExample href="/components/widgets/#cwidgetstatsb">
           <CRow>

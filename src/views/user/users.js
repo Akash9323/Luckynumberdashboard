@@ -31,6 +31,8 @@ import {
   cifPl,
   cifUs,
   cilPeople,
+  //cilEye,
+  cilDelete
 } from '@coreui/icons'
 
 import avatar1 from 'src/assets/images/avatars/1.jpg'
@@ -57,6 +59,7 @@ const Users = () => {
       },
       payment: { name: 'Mastercard', icon: cibCcMastercard },
       activity: '10 sec ago',
+      delete:{name:'viewdelete',icon:cilDelete},
     },
     {
       avatar: { src: avatar2, status: 'danger' },
@@ -150,6 +153,9 @@ const Users = () => {
                     <CTableHeaderCell>Usage</CTableHeaderCell>
                     <CTableHeaderCell className="text-center">Payment Method</CTableHeaderCell>
                     <CTableHeaderCell>Activity</CTableHeaderCell>
+                    <CTableHeaderCell>View</CTableHeaderCell>
+                    <CTableHeaderCell>Update</CTableHeaderCell>
+                    <CTableHeaderCell>Delete</CTableHeaderCell>
                   </CTableRow>
                 </CTableHead>
                 <CTableBody>
@@ -167,7 +173,12 @@ const Users = () => {
                       </CTableDataCell>
                       <CTableDataCell className="text-center">
                         <CIcon size="xl" icon={item.country.flag} title={item.country.name} />
-                      </CTableDataCell>
+                      </CTableDataCell>            
+
+                      {/* <CTableDataCell className="item-center">
+                        <CIcon size="xl" icon={item.country.delete} title={item.delete.viewdelete} />
+                      </CTableDataCell> */}
+
                       <CTableDataCell>
                         <div className="clearfix">
                           <div className="float-start">

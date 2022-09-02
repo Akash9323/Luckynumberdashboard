@@ -1,13 +1,15 @@
 import React from 'react'
 import { CChartLine } from '@coreui/react-chartjs'
 import { getStyle, hexToRgba } from '@coreui/utils'
+import WidgetsDash from '../widgets/WidgetsDash'
 
 const Dashboard = () => {
   const random = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
 
   return (
     <div>
-      <h1>Dashboard</h1>
+      {/* <h1>Dashboard</h1> */}
+      <WidgetsDash />
       <CChartLine
         style={{ height: '300px', marginTop: '40px' }}
         data={{

@@ -12,7 +12,7 @@ const AppFooter = () => {
       </div>
       <div className="ms-auto">
         <span className="me-1">Powered by</span>
-        <a href="https://coreui.io/react" target="_blank" rel="noopener noreferrer">
+        <a href="https://luckynumberstv.co.uk" target="_blank" rel="noopener noreferrer">
         Luckynumberstv.co.uk
         </a>
       </div>

@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+
 import React from 'react'
 import Luckycoinstore from './views/luckycoinstore/luckycoinstore'
 import Players from './views/player/player'

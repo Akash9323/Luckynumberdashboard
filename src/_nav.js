@@ -3,7 +3,7 @@
 import React from 'react'
 import CIcon from '@coreui/icons-react'
 import { 
-  cilSpeedometer,
+  // cilSpeedometer,
    cilStar,
    cilUser,
    cilPeople ,
@@ -26,7 +26,7 @@ const _nav = [
     icon: <CIcon icon={cibDashlane} customClassName="nav-icon" />,
     badge: {
       color: 'info',
-      text: 'NEW',
+      // text: 'NEW',
     },
   },
   {
@@ -67,8 +67,8 @@ const _nav = [
   },
   {
     component: CNavItem,
-    name: 'Lucky Coin Store',
-    to: '/luckycoinStore',
+    name: 'Lucky coin store',
+    to: '/luckycoinstore',
     icon: <CIcon icon={ cilBasket} customClassName="nav-icon" />,
     badge: {
       color: 'info',
