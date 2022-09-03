@@ -34,11 +34,11 @@ import {
   cilWallet,
   cilPen,
   //cidPen
-  cibCodepen
- // cilBasket
+  cibCodepen,
+  // cilBasket
   //cilEye,
   //cilPen
- // cilEye
+  // cilEye
   //cilEye,
   //cilDelete,
 } from '@coreui/icons'
@@ -58,19 +58,20 @@ const Users = () => {
                     <CTableHeaderCell className="text-center">
                       <CIcon icon={cilPeople} />
                     </CTableHeaderCell>
-                    <CTableHeaderCell >Name</CTableHeaderCell>
+                    <CTableHeaderCell>Name</CTableHeaderCell>
                     <CTableHeaderCell className="text-center">Phone Number</CTableHeaderCell>
                     <CTableHeaderCell className="text-center">Email Id</CTableHeaderCell>
                     <CTableHeaderCell className="text-center">Role</CTableHeaderCell>
-                    <CTableHeaderCell  className="text-center">Action</CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">Action</CTableHeaderCell>
                   </CTableRow>
                 </CTableHead>
                 <CTableBody>
                   {userData.map((item, index) => (
                     <CTableRow v-for="item in tableItems" key={index}>
                       <CTableDataCell className="text-center">
- 
-                      <CAvatar size="md" src={' '}>{item.user_name.split(" ")[0][0]}</CAvatar>
+                        <CAvatar size="md" src="../../assets/images/avatars/1.jpg">
+                          {item.user_name.split(' ')[0][0]}
+                        </CAvatar>
                       </CTableDataCell>
                       <CTableDataCell>
                         <div>{item.user_name}</div>
@@ -84,11 +85,39 @@ const Users = () => {
                       <CTableDataCell className="text-center">
                         <div>{item.role_name}</div>
                       </CTableDataCell>
-
                       <CTableDataCell className="text-center">
-                        <div><CIcon style={{height:'20px',width:'20px',color:'black',cursor:'pointer'}}  icon={cilWallet} customClassName="nav-icon" />
-                        <CIcon  style={{height:'20px',width:'20px',margin:'0 12px',color:'blue',cursor:'pointer'}} icon={cilWallet} customClassName="nav-icon" />
-                        <CIcon  style={{height:'20px',width:'20px',color:'red',cursor:'pointer'}} icon={cilWallet} customClassName="nav-icon" />
+                        <div>
+                          <CIcon
+                            style={{
+                              height: '20px',
+                              width: '20px',
+                              color: 'black',
+                              cursor: 'pointer',
+                            }}
+                            icon={cilWallet}
+                            customClassName="nav-icon"
+                          />
+                          <CIcon
+                            style={{
+                              height: '20px',
+                              width: '20px',
+                              margin: '0 12px',
+                              color: 'blue',
+                              cursor: 'pointer',
+                            }}
+                            icon={cilWallet}
+                            customClassName="nav-icon"
+                          />
+                          <CIcon
+                            style={{
+                              height: '20px',
+                              width: '20px',
+                              color: 'red',
+                              cursor: 'pointer',
+                            }}
+                            icon={cilWallet}
+                            customClassName="nav-icon"
+                          />
                         </div>
                       </CTableDataCell>
                     </CTableRow>
