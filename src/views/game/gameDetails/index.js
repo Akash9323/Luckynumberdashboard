@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react'
+
 import {
   CAvatar,
   CCard,
@@ -18,19 +19,19 @@ import CIcon from '@coreui/icons-react'
 import {
   cilPeople,
   cilWallet,
-  cilPen,
   //cidPen
-  //cibCodepen,
-  cilTrash,
+  
   // cilBasket
   //cilPen
   // cilEye
   //cilEye,
   //cilDelete,
 } from '@coreui/icons'
-import { playerData } from './player.service'
+import { gameData } from '../game.service'
+//import { gameData } from './game.service'
 
-const Players = () => {
+
+const Gamedetails = () => {
   //
 
   return (
@@ -38,7 +39,7 @@ const Players = () => {
       <CRow>
         <CCol xs>
           <CCard className="mb-4">
-            <CCardHeader>Player Details</CCardHeader>
+            <CCardHeader>Game Details</CCardHeader>
             <CCardBody>
               <CTable align="middle" className="mb-0 border" hover responsive>
                 <CTableHead color="light">
@@ -46,40 +47,28 @@ const Players = () => {
                     <CTableHeaderCell className="text-center">
                       <CIcon icon={cilPeople} />
                     </CTableHeaderCell>
-                    <CTableHeaderCell>Name</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Address</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">user Id</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Wallet Id</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Referred By</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Gameplayer</CTableHeaderCell>
+                    <CTableHeaderCell>Start Time</CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">End Time</CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">Game Level</CTableHeaderCell>
                     <CTableHeaderCell className="text-center">Action</CTableHeaderCell>
                   </CTableRow>
                 </CTableHead>
-                <CTableBody>
-                  {playerData.map((item, index) => (
+                 <CTableBody>
+                  {gameData.map((item, index) => (
                     <CTableRow v-for="item in tableItems" key={index}>
                       <CTableDataCell className="text-center">
                         <CAvatar size="md" src="../../assets/images/avatars/1.jpg">
-                          {item.player_name.split(' ')[0][0]}
+                          {item.game_starttime.split(' ')[0][0]}
                         </CAvatar>
                       </CTableDataCell>
                       <CTableDataCell>
-                        <div>{item.player_name}</div>
+                        <div>{item.game_starttime}</div>
                       </CTableDataCell>
                       <CTableDataCell>
-                        <div className="small text-center">{item.player_address}</div>
+                        <div className="small text-center">{item.game_endtime}</div>
                       </CTableDataCell>
                       <CTableDataCell className="text-center">
-                        <div>{item.user_id}</div>
-                      </CTableDataCell>
-                      <CTableDataCell className="text-center">
-                        <div>{item.wallet_id}</div>
-                      </CTableDataCell>
-                      <CTableDataCell className="text-center">
-                        <div>{item.referred_by}</div>
-                      </CTableDataCell>
-                      <CTableDataCell className="text-center">
-                        <div>{item.gameplayer}</div>
+                        <div>{item.game_levelid}</div>
                       </CTableDataCell>
                       <CTableDataCell className="text-center">
                         <div>
@@ -101,7 +90,7 @@ const Players = () => {
                               color: 'blue',
                               cursor: 'pointer',
                             }}
-                            icon={cilPen}
+                            icon={cilWallet}
                             customClassName="nav-icon"
                           />
                           <CIcon
@@ -111,14 +100,14 @@ const Players = () => {
                               color: 'red',
                               cursor: 'pointer',
                             }}
-                            icon={cilTrash}
+                            icon={cilWallet}
                             customClassName="nav-icon"
                           />
                         </div>
                       </CTableDataCell>
                     </CTableRow>
                   ))}
-                </CTableBody>
+                </CTableBody> 
               </CTable>
             </CCardBody>
           </CCard>
@@ -128,4 +117,4 @@ const Players = () => {
   )
 }
 
-export default Players
+export default Gamedetails

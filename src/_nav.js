@@ -15,6 +15,7 @@ import {
    cilBraille,
    cilBasket,
    cilSpeech,
+   cilGamepad,
   } from '@coreui/icons'
 import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
 
@@ -43,6 +44,15 @@ const _nav = [
     name: 'Players',
     to: '/players',
     icon: <CIcon icon={cilPeople} customClassName="nav-icon" />,
+    badge: {
+      color: 'info',
+    },
+  },
+  {
+    component: CNavItem,
+    name: 'Game',
+    to: '/game',
+    icon: <CIcon icon={cilGamepad} customClassName="nav-icon" />,
     badge: {
       color: 'info',
     },

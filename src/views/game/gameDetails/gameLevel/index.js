@@ -7,7 +7,6 @@ import {
   CCardBody,
   CCardHeader,
   CCol,
-  CProgress,
   CRow,
   CTable,
   CTableBody,
@@ -18,39 +17,29 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import {
-  cibCcAmex,
-  cibCcApplePay,
-  cibCcMastercard,
-  cibCcPaypal,
-  cibCcStripe,
-  cibCcVisa,
-  cifBr,
-  cifEs,
-  cifFr,
-  cifIn,
-  cifPl,
-  cifUs,
   cilPeople,
   cilWallet,
-  cilPen,
   //cidPen
-  cibCodepen,
+  
   // cilBasket
-  //cilEye,
   //cilPen
   // cilEye
   //cilEye,
   //cilDelete,
 } from '@coreui/icons'
-import { userData } from './user.service'
+import { gameData } from '../game.service'
+//import { gameData } from './game.service'
 
-const Users = () => {
+
+const Gamelevel= () => {
+  //
+
   return (
     <>
       <CRow>
         <CCol xs>
           <CCard className="mb-4">
-            <CCardHeader>User Details</CCardHeader>
+            <CCardHeader>Game Level</CCardHeader>
             <CCardBody>
               <CTable align="middle" className="mb-0 border" hover responsive>
                 <CTableHead color="light">
@@ -58,32 +47,28 @@ const Users = () => {
                     <CTableHeaderCell className="text-center">
                       <CIcon icon={cilPeople} />
                     </CTableHeaderCell>
-                    <CTableHeaderCell>Name</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Phone Number</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Email Id</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Role</CTableHeaderCell>
+                    <CTableHeaderCell>Start Time</CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">End Time</CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">Game Level</CTableHeaderCell>
                     <CTableHeaderCell className="text-center">Action</CTableHeaderCell>
                   </CTableRow>
                 </CTableHead>
-                <CTableBody>
-                  {userData.map((item, index) => (
+                 <CTableBody>
+                  {gameData.map((item, index) => (
                     <CTableRow v-for="item in tableItems" key={index}>
                       <CTableDataCell className="text-center">
                         <CAvatar size="md" src="../../assets/images/avatars/1.jpg">
-                          {item.user_name.split(' ')[0][0]}
+                          {item.game_starttime.split(' ')[0][0]}
                         </CAvatar>
                       </CTableDataCell>
                       <CTableDataCell>
-                        <div>{item.user_name}</div>
+                        <div>{item.game_starttime}</div>
                       </CTableDataCell>
                       <CTableDataCell>
-                        <div className="small text-center">{item.user_number}</div>
+                        <div className="small text-center">{item.game_endtime}</div>
                       </CTableDataCell>
                       <CTableDataCell className="text-center">
-                        <div>{item.user_email}</div>
-                      </CTableDataCell>
-                      <CTableDataCell className="text-center">
-                        <div>{item.role_name}</div>
+                        <div>{item.game_levelid}</div>
                       </CTableDataCell>
                       <CTableDataCell className="text-center">
                         <div>
@@ -122,7 +107,7 @@ const Users = () => {
                       </CTableDataCell>
                     </CTableRow>
                   ))}
-                </CTableBody>
+                </CTableBody> 
               </CTable>
             </CCardBody>
           </CCard>
@@ -132,4 +117,4 @@ const Users = () => {
   )
 }
 
-export default Users
+export default Gamelevel

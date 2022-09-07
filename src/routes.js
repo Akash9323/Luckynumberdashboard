@@ -1,18 +1,22 @@
 /* eslint-disable prettier/prettier */
 
 import React from 'react'
+import Game from './views/game/game'
+//import Gamedetails from './views/game/gameDetails'
 import Luckycoinstore from './views/luckycoinstore/luckycoinstore'
 import Players from './views/player/player'
 import Profile from './views/profile/profile'
 import Question from './views/question/question'
 import Randomnumber from './views/randomnumber/randomnumber'
 import Region from './views/region/region'
-import Users from './views/user/users'
+import Users from './views/user'
+//import Users from './views/user/users'
+
 import Wallet from './views/wallet/wallet'
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
-const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
-const Typography = React.lazy(() => import('./views/theme/typography/Typography'))
+// const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
+// const Typography = React.lazy(() => import('./views/theme/typography/Typography'))
 
 // Base
 const Accordion = React.lazy(() => import('./views/base/accordion/Accordion'))
@@ -65,15 +69,17 @@ const routes = [
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
   { path: '/users', name: 'Users', element: Users },
   { path: '/players', name: 'Players', element: Players },
+  { path: '/game', name: 'Game', element: Game},
+  //{ path: '/game', name: 'GameDetails', element: Gamedetails},
   { path: '/wallet', name: 'Wallet', element: Wallet },
   { path: '/profile', name: 'Profile', element: Profile },
   { path: '/region', name: 'Region', element: Region },
   { path: '/randomnumbers', name: 'Randomnumbers', element: Randomnumber },
   { path: '/question', name: 'Question', element: Question },
   { path: '/luckycoinstore', name: 'Luckycoinstore', element: Luckycoinstore },
-  { path: '/theme', name: 'Theme', element: Colors, exact: true },
-  { path: '/theme/colors', name: 'Colors', element: Colors },
-  { path: '/theme/typography', name: 'Typography', element: Typography },
+  // { path: '/theme', name: 'Theme', element: Colors, exact: true },
+  // { path: '/theme/colors', name: 'Colors', element: Colors },
+  // { path: '/theme/typography', name: 'Typography', element: Typography },
   { path: '/base', name: 'Base', element: Cards, exact: true },
   { path: '/base/accordion', name: 'Accordion', element: Accordion },
   { path: '/base/breadcrumbs', name: 'Breadcrumbs', element: Breadcrumbs },
