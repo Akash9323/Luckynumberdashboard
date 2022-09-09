@@ -9,8 +9,9 @@ import {
     CCardBody,
 
 } from '@coreui/react'
-import CIcon from '@coreui/icons-react'
-const ViewUser = (onClickBack,editUser) => {
+import CIcon from '@coreui/icons-react';
+import PropTypes from 'prop-types'
+const ViewUser = ({onClickBack,editUser}) => {
   return (
     <CCard className="mb-4">
       <CCardHeader>
@@ -39,3 +40,8 @@ const ViewUser = (onClickBack,editUser) => {
 }
 
 export default ViewUser
+
+ViewUser.propTypes = {
+  onClickBack:PropTypes.any,
+  editUser:PropTypes.object,
+}

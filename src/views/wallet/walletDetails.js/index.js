@@ -1,4 +1,6 @@
 /* eslint-disable prettier/prettier */
+
+/* eslint-disable prettier/prettier */
 import React from 'react'
 
 import {
@@ -17,7 +19,9 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import {
+  cilPen,
   cilPeople,
+  cilTrash,
   cilWallet,
   //cidPen
   
@@ -27,11 +31,11 @@ import {
   //cilEye,
   //cilDelete,
 } from '@coreui/icons'
-import { gameData } from '../game.service'
+import { walletData } from './wallet.service'
 
 
 
-const Gamelevel= () => {
+const WalletDetails = () => {
   //
 
   return (
@@ -39,7 +43,7 @@ const Gamelevel= () => {
       <CRow>
         <CCol xs>
           <CCard className="mb-4">
-            <CCardHeader>Game Level</CCardHeader>
+            <CCardHeader>Wallet Details Page</CCardHeader>
             <CCardBody>
               <CTable align="middle" className="mb-0 border" hover responsive>
                 <CTableHead color="light">
@@ -47,29 +51,27 @@ const Gamelevel= () => {
                     <CTableHeaderCell className="text-center">
                       <CIcon icon={cilPeople} />
                     </CTableHeaderCell>
-                    <CTableHeaderCell>Game</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">End Time</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Game Level</CTableHeaderCell>
+                    <CTableHeaderCell>Wallet Amount</CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">Wallet Details</CTableHeaderCell>
+                    {/* <CTableHeaderCell className="text-center">Transaction Date</CTableHeaderCell> */}
                     <CTableHeaderCell className="text-center">Action</CTableHeaderCell>
                   </CTableRow>
                 </CTableHead>
                  <CTableBody>
-                  {gameData.map((item, index) => (
+                  {walletData.map((item, index) => (
                     <CTableRow v-for="item in tableItems" key={index}>
                       <CTableDataCell className="text-center">
                         <CAvatar size="md" src="../../assets/images/avatars/1.jpg">
-                          {item.game_starttime.split(' ')[0][0]}
+                          {item.wallet_amount.split(' ')[0][0]}
                         </CAvatar>
                       </CTableDataCell>
                       <CTableDataCell>
-                        <div>{item.game_starttime}</div>
+                        <div>{item.wallet_amount}</div>
                       </CTableDataCell>
                       <CTableDataCell>
-                        <div className="small text-center">{item.game_endtime}</div>
+                        <div className="small text-center">{item.wallet_details}</div>
                       </CTableDataCell>
-                      <CTableDataCell className="text-center">
-                        <div>{item.game_levelid}</div>
-                      </CTableDataCell>
+                     
                       <CTableDataCell className="text-center">
                         <div>
                           <CIcon
@@ -90,7 +92,7 @@ const Gamelevel= () => {
                               color: 'blue',
                               cursor: 'pointer',
                             }}
-                            icon={cilWallet}
+                            icon={cilPen}
                             customClassName="nav-icon"
                           />
                           <CIcon
@@ -100,7 +102,7 @@ const Gamelevel= () => {
                               color: 'red',
                               cursor: 'pointer',
                             }}
-                            icon={cilWallet}
+                            icon={cilTrash}
                             customClassName="nav-icon"
                           />
                         </div>
@@ -116,5 +118,4 @@ const Gamelevel= () => {
     </>
   )
 }
-
-export default Gamelevel
+export default WalletDetails

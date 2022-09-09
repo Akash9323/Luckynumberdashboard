@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { CAlert, CCol, CRow, CToast, CToastBody } from '@coreui/react'
 import UserForm from './userForm'
@@ -7,6 +7,7 @@ import UserForm from './userForm'
 import ViewUser from './viewUser'
 import { userData } from './user.service'
 import UsersScreen from './usersScreen'
+import PropTypes from 'prop-types'
 
 const Users = () => {
   const [currentScreen, setCurrentScreen] = useState(0)
@@ -14,7 +15,8 @@ const Users = () => {
   const [email, setEmail] = useState('')
   const [mobileNo, setMobileNo] = useState('')
   // const [password, setPassword] = useState('')
-  const [role, setRole] = useState('')
+  const [role, setRole] = useState('');
+
   const [editUser, setEditUser] = useState({
     isEditing: false,
     editItem: null,
@@ -27,13 +29,15 @@ const Users = () => {
   const [page, setPage] = useState(0);
   // const [rowsPerPage, setRowsPerPage] = useState(5);
   const onClickAddNew = () => {
+    
     setEditUser({ isEditing: false, editItem: null })
     onDiscard()
-    setCurrentScreen(1)
+    setCurrentScreen(1);
+    console.log('edit user from onclicknew',editUser)
   }
   const onClickBack = () => {
-    onDiscard()
-    setCurrentScreen(0)
+    onDiscard();
+    setCurrentScreen(0);
   }
   const onChangeUserName = (e) => {
     setUserName(e.target.value)
@@ -47,14 +51,14 @@ const Users = () => {
   // const onChangePassword = (e) => {
   //   setPassword(e.target.value)
   // }
-  const onChangeRole = (value) => {
-    console.log('role', value)
-    setRole(value)
+  const onChangeRole = (e) => {
+    console.log('role', e.target.value)
+    setRole(e.target.value)
   }
   const onClickViewBtn = (editUserData) => {
     //console.log('data coming for editing', editUserData)
     setEditUser({ isEditing: false, editItem: editUserData })
-    setCurrentScreen(2)
+    setCurrentScreen(2);
   }
   const onClickEditBtn = (editUserData) => {
     //console.log('data coming for editing', editUserData)
@@ -70,6 +74,7 @@ const Users = () => {
       message: 'user deleted successfully',
     })
   }
+
   
 
   const onOpenEditUser = () => {
@@ -226,3 +231,7 @@ const Users = () => {
 }
 
 export default Users
+
+Users.propTypes = {
+  editUser:PropTypes.object,
+}

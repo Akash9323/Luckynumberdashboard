@@ -46,10 +46,10 @@ const Game = () => {
                     <CTableHeaderCell className="text-center">
                       <CIcon icon={cilPeople} />
                     </CTableHeaderCell>
-                    <CTableHeaderCell>Name</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Date</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Time</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Details</CTableHeaderCell>
+                    <CTableHeaderCell>Game Name</CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">Game Date</CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">Game Time</CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">Game Details</CTableHeaderCell>
                    
                     
                     <CTableHeaderCell className="text-center">Action</CTableHeaderCell>

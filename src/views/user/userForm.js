@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { useEffect } from 'react';
-import PropTypes from 'prop-types'
+import PropTypes, { any } from 'prop-types'
 import {
     CButton,
     CCard,
@@ -15,20 +15,13 @@ import {
   } from '@coreui/react'
   import React from 'react'
   import {
-    //cilPeople,
-    //cilWallet,
-    //cilPen,
-    //cidPen
-    //cibCodepen,
-    //cisArrowLeft,
     cilArrowThickLeft,
   } from '@coreui/icons'
   import CIcon from '@coreui/icons-react'
   const UserForm = (
-    onClickBack,
+   { onClickBack,
     onSubmit,
     onUpdate,
-    onDiscard,
     onChangeUserName,
     onChangeEmail,
     onChangeMobileNo,
@@ -40,13 +33,13 @@ import {
     mobileNo,
     //password,
     role,
-    editUser,
+    editUser,}
   ) => {
      useEffect(() => {
       if (editUser.isEditing) {
         onOpenEditUser();
        }
-     }, [editUser.isEditing]);
+     }, [editUser?.isEditing]);
   
     return (
       <CCard className="mb-4">
@@ -60,12 +53,12 @@ import {
               cursor: 'pointer',
             }}
             icon={cilArrowThickLeft}
-            //onClick={onClickBack}
+            onClick={()=>onClickBack()}
           />
           {editUser.isEditing ? 'Edit User' : 'Add User'}
         </CCardHeader>
         <CCardBody>
-          <CRow>
+          <CRow xs={{ gutterY: 2 }}>
             <CCol sm={12} md={6}>
               <CForm>
                 <CFormLabel htmlFor="exampleFormControlInput1">User Name</CFormLabel>
@@ -106,10 +99,11 @@ import {
               </CForm>
             </CCol>
             <CCol sm={12} md={6}>
+              <label className="mb-2" >Role</label>
               <CFormSelect size="lg" className="mb-3" required value={role} onChange={onChangeRole}>
                 <option>Role</option>
-                <option value="User">User</option>
-                <option value="Admin">Admin</option>
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
               </CFormSelect>
             </CCol>
           </CRow>
@@ -123,7 +117,23 @@ import {
   export default UserForm
 
   UserForm.propTypes = {
+    // onOpenEditUser:PropTypes.any,
+    // onChange:PropTypes.any,
+    onClickBack:PropTypes.any,
+    onSubmit:PropTypes.any,
+    onUpdate:PropTypes.any,
+    onDiscard:PropTypes.any,
+    onChangeUserName:PropTypes.any,
+    onChangeEmail:PropTypes.any,
+    onChangeMobileNo:PropTypes.any,
+    //onChangePassword,
+    onChangeRole:PropTypes.any,
     onOpenEditUser:PropTypes.any,
-    onChange:PropTypes.any,
+    userName:PropTypes.any,
+    email:PropTypes.any,
+    mobileNo:PropTypes.any,
+    //password,
+    role:PropTypes.any,
+    editUser:any,
   }
  
