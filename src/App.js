@@ -1,6 +1,10 @@
+/* eslint-disable prettier/prettier */
 import React, { Component, Suspense } from 'react'
 import { HashRouter, Route, Routes } from 'react-router-dom'
 import './scss/style.scss'
+//import { CSpinner } from '@coreui/react'
+//import ViewUser from './views/user/viewUser'
+//import ViewUserPage from './views/user/ViewUserPage'
 
 const loading = (
   <div className="pt-3 text-center">
@@ -22,7 +26,9 @@ class App extends Component {
     return (
       <HashRouter>
         <Suspense fallback={loading}>
+        {/* <CSpinner/> */}
           <Routes>
+           {/* <Route exact path="/viewuser" element={<ViewUserPage/>} /> */}
             <Route exact path="/login" name="Login Page" element={<Login />} />
             <Route exact path="/register" name="Register Page" element={<Register />} />
             <Route exact path="/404" name="Page 404" element={<Page404 />} />

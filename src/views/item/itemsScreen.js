@@ -1,4 +1,7 @@
 /* eslint-disable prettier/prettier */
+
+
+/* eslint-disable prettier/prettier */
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import {
@@ -28,50 +31,49 @@ import {
      //cilEye,
      cilEyedropper,
      } from '@coreui/icons'
-import { userData } from './user.service'
+import { itemsData } from './item.service'
 
-const UsersScreen = ({
+const ItemsScreen = ({
   setCurrentScreen,
-  onClickAddUserBtn,
-  editUser,
-  setEditUser,
+  onClickAddItemsBtn,
+  editItems,
+  setEditItems,
   onClickViewBtn,
  onClickEditBtn,
 //  onClickDeleteBtn,
 }) => {
   const [searchedText, setSearchedText] = useState('')
   const [searchData, setSearchData] = useState([])
-  //const pageCount= Math.ceil(userData.length/10);
+  //const pageCount= Math.ceil(itemsData.length/10);
   //console.log('props', props)
   return (
     <>
       <CCard className="mb-4">
         <CCardHeader>
-          User Details
+          Items Details
           <CButton
             style={{ marginLeft: '12px' }}
             color="primary"
             onClick={() => {
               console.log('click add')
                //setCurrentScreen(1)
-               onClickAddUserBtn();
+               onClickAddItemsBtn();
             }}
           >
-            Add User
+            Add Items
           </CButton>
         </CCardHeader>
         <CCardBody>
           <CFormInput
             type="search"
-            placeholder="Search user by name or email"
+            placeholder="Search items by itemsname or price"
             style={{ marginBottom: '16px' }}
             onChange={(e) => {
               setSearchedText(e.target.value)
-              console.log("e.target", e.target.value)
-              const filteredData = userData.filter(
+              const filteredData = itemsData.filter(
                 (i) =>
-                  i.user_name.toLowerCase().includes(e.target.value.toLowerCase()) ||
-                  i.user_email.toLowerCase().includes(e.target.value.toLowerCase()),
+                  i.items_name.toLowerCase().includes(e.target.value.toLowerCase()) ||
+                  i.items_email.toLowerCase().includes(e.target.value.toLowerCase()),
               )
               setSearchData(filteredData)
             }}
@@ -83,31 +85,33 @@ const UsersScreen = ({
                   <CIcon icon={cilPeople} />
                 </CTableHeaderCell>
                 <CTableHeaderCell>Name</CTableHeaderCell>
-                <CTableHeaderCell className="text-center">Phone Number</CTableHeaderCell>
-                <CTableHeaderCell className="text-center">Email Id</CTableHeaderCell>
-                <CTableHeaderCell className="text-center">Role</CTableHeaderCell>
+                <CTableHeaderCell className="text-center">Description</CTableHeaderCell>
+                <CTableHeaderCell className="text-center">Price</CTableHeaderCell>
+                <CTableHeaderCell className="text-center">Qty</CTableHeaderCell>
+                <CTableHeaderCell className="text-center">Category</CTableHeaderCell>
+                <CTableHeaderCell className="text-center">Purchase Type</CTableHeaderCell>
                 <CTableHeaderCell className="text-center">Action</CTableHeaderCell>
               </CTableRow>
             </CTableHead>
             <CTableBody>
-              {(searchedText !== '' ? searchData : userData).map((item, index) => (
+              {(searchedText !== '' ? searchData : itemsData).map((item, index) => (
                 <CTableRow v-for="item in tableItems" key={index}>
                   <CTableDataCell className="text-center">
                     <CAvatar size="md" src="../../assets/images/avatars/1.jpg">
-                      {item.user_name.split(' ')[0][0]}
+                      {item.items_name.split(' ')[0][0]}
                     </CAvatar>
                   </CTableDataCell>
                   <CTableDataCell>
-                    <div>{item.user_name}</div>
+                    <div>{item.items_description}</div>
                   </CTableDataCell>
                   <CTableDataCell>
-                    <div className="small text-center">{item.user_number}</div>
+                    <div className="small text-center">{item.items_price}</div>
                   </CTableDataCell>
                   <CTableDataCell className="text-center">
-                    <div>{item.user_email}</div>
+                    <div>{item.items_qty}</div>
                   </CTableDataCell>
                   <CTableDataCell className="text-center">
-                    <div>{item.role_name}</div>
+                    <div>{item.items_category}</div>
                   </CTableDataCell>
                   <CTableDataCell className="text-center">
                     <div>
@@ -179,16 +183,28 @@ const UsersScreen = ({
   )
 }
 
-export default UsersScreen
+export default ItemsScreen
 
-UsersScreen.propTypes = {
+ItemsScreen.propTypes = {
   setCurrentScreen:PropTypes.any,
-  onClickAddUserBtn:PropTypes.any,
-  editUser:PropTypes.object,
-  setEditUser:PropTypes.any,
+  onClickAddItemsBtn:PropTypes.any,
+  editItems:PropTypes.object,
+  setEditItems:PropTypes.any,
   onClickViewBtn:PropTypes.any,
   onClickEditBtn:PropTypes.any,
   onClickDeleteBtn:PropTypes.any,
 }
 
 
+
+// import React from 'react'
+
+// const itemsScreen = () => {
+//   return (
+//     <div>
+//     <h1>itemsScreen</h1>
+//     </div>
+//   )
+// }
+
+// export default itemsScreen

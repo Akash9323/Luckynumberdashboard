@@ -1,5 +1,4 @@
 /* eslint-disable prettier/prettier */
-
 /* eslint-disable prettier/prettier */
 import React from 'react'
 
@@ -33,11 +32,8 @@ import {
 } from '@coreui/icons'
 import { walletData } from './wallet.service'
 
-
-
 const WalletDetails = () => {
   //
-
   return (
     <>
       <CRow>
@@ -70,8 +66,7 @@ const WalletDetails = () => {
                       </CTableDataCell>
                       <CTableDataCell>
                         <div className="small text-center">{item.wallet_details}</div>
-                      </CTableDataCell>
-                     
+                      </CTableDataCell>                    
                       <CTableDataCell className="text-center">
                         <div>
                           <CIcon

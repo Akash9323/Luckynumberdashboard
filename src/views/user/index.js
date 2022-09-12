@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 
 import { CAlert, CCol, CRow, CToast, CToastBody } from '@coreui/react'
 import UserForm from './userForm'
-//import UsersScreen from './usersScreen'
 import ViewUser from './viewUser'
 import { userData } from './user.service'
 import UsersScreen from './usersScreen'

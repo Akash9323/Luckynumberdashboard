@@ -2,9 +2,9 @@
 
 import React from 'react'
 import Game from './views/game/game'
-//import Gamedetails from './views/game/gameDetails'
+import Items from './views/item'
 import Luckycoinstore from './views/luckycoinstore/luckycoinstore'
-import Players from './views/player/player'
+import Players from './views/player/playersScreen'
 import Profile from './views/profile/profile'
 import Question from './views/question/question'
 import Randomnumber from './views/randomnumber/randomnumber'
@@ -70,13 +70,13 @@ const routes = [
   { path: '/users', name: 'Users', element: Users },
   { path: '/players', name: 'Players', element: Players },
   { path: '/game', name: 'Game', element: Game},
-  //{ path: '/game', name: 'GameDetails', element: Gamedetails},
   { path: '/wallet', name: 'Wallet', element: Wallet },
   { path: '/profile', name: 'Profile', element: Profile },
   { path: '/region', name: 'Region', element: Region },
   { path: '/randomnumbers', name: 'Randomnumbers', element: Randomnumber },
   { path: '/question', name: 'Question', element: Question },
   { path: '/luckycoinstore', name: 'Luckycoinstore', element: Luckycoinstore },
+  { path: '/item', name: 'Item', element:Items },
   // { path: '/theme', name: 'Theme', element: Colors, exact: true },
   // { path: '/theme/colors', name: 'Colors', element: Colors },
   // { path: '/theme/typography', name: 'Typography', element: Typography },

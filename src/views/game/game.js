@@ -17,7 +17,9 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import {
+  cilPen,
   cilPeople,
+  cilTrash,
   cilWallet,
   //cidPen
   
@@ -49,9 +51,7 @@ const Game = () => {
                     <CTableHeaderCell>Game Name</CTableHeaderCell>
                     <CTableHeaderCell className="text-center">Game Date</CTableHeaderCell>
                     <CTableHeaderCell className="text-center">Game Time</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Game Details</CTableHeaderCell>
-                   
-                    
+                    <CTableHeaderCell className="text-center">Game Details</CTableHeaderCell>  
                     <CTableHeaderCell className="text-center">Action</CTableHeaderCell>
                   </CTableRow>
                 </CTableHead>
@@ -96,7 +96,7 @@ const Game = () => {
                               color: 'blue',
                               cursor: 'pointer',
                             }}
-                            icon={cilWallet}
+                            icon={cilPen}
                             customClassName="nav-icon"
                           />
                           <CIcon
@@ -106,7 +106,7 @@ const Game = () => {
                               color: 'red',
                               cursor: 'pointer',
                             }}
-                            icon={cilWallet}
+                            icon={cilTrash}
                             customClassName="nav-icon"
                           />
                         </div>
