@@ -10,6 +10,7 @@ import Question from './views/question/question'
 import Randomnumber from './views/randomnumber/randomnumber'
 import Region from './views/region/region'
 import Users from './views/user'
+import ViewUser from './views/user/viewUser'
 //import Users from './views/user/users'
 
 import Wallet from './views/wallet/wallet'
@@ -68,6 +69,7 @@ const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
   { path: '/users', name: 'Users', element: Users },
+  { path: '/users/:userId', name: 'Users', element: ViewUser },
   { path: '/players', name: 'Players', element: Players },
   { path: '/game', name: 'Game', element: Game},
   { path: '/wallet', name: 'Wallet', element: Wallet },

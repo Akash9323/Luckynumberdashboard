@@ -7,15 +7,21 @@ import ViewUser from './viewUser'
 import { userData } from './user.service'
 import UsersScreen from './usersScreen'
 import PropTypes from 'prop-types'
+import { useDispatch, useSelector } from 'react-redux'
+import { getAllUsers } from 'src/redux/actions/user.action'
+import { useNavigate } from 'react-router-dom'
+import { addUser } from 'src/api/api'
 
 const Users = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  
   const [currentScreen, setCurrentScreen] = useState(0)
   const [userName, setUserName] = useState('')
   const [email, setEmail] = useState('')
   const [mobileNo, setMobileNo] = useState('')
-  // const [password, setPassword] = useState('')
-  const [role, setRole] = useState('');
-
+  const [loading, setLoading] = useState('')
+  const [role, setRole] = useState('')
   const [editUser, setEditUser] = useState({
     isEditing: false,
     editItem: null,
@@ -25,18 +31,25 @@ const Users = () => {
     color: 'success',
     message: '',
   })
-  const [page, setPage] = useState(0);
-  // const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [page, setPage] = useState(0)
+  
+
+  const userState = useSelector((state) => state.user);
+
+  useEffect(() => {
+    dispatch(getAllUsers())
+    //console.log('users', state.users)
+  }, [])
+
   const onClickAddNew = () => {
-    
     setEditUser({ isEditing: false, editItem: null })
     onDiscard()
-    setCurrentScreen(1);
-    console.log('edit user from onclicknew',editUser)
+    setCurrentScreen(1)
+    console.log('edit user from onclicknew', editUser)
   }
   const onClickBack = () => {
-    onDiscard();
-    setCurrentScreen(0);
+    onDiscard()
+    setCurrentScreen(0)
   }
   const onChangeUserName = (e) => {
     setUserName(e.target.value)
@@ -57,7 +70,8 @@ const Users = () => {
   const onClickViewBtn = (editUserData) => {
     //console.log('data coming for editing', editUserData)
     setEditUser({ isEditing: false, editItem: editUserData })
-    setCurrentScreen(2);
+    //setCurrentScreen(2)
+    navigate(`/users/${editUserData.user_id}`)
   }
   const onClickEditBtn = (editUserData) => {
     //console.log('data coming for editing', editUserData)
@@ -66,15 +80,13 @@ const Users = () => {
   }
   const onClickDeleteBtn = (id) => {
     //console.log('data coming for editing', editUserData)
-    userData.splice(id, 1);
-    setToast({
-      visible: true,
-      color: 'success',
-      message: 'user deleted successfully',
-    })
+    // userData.splice(id, 1)
+    // setToast({
+    //   visible: true,
+    //   color: 'success',
+    //   message: 'user deleted successfully',
+    // })
   }
-
-  
 
   const onOpenEditUser = () => {
     setUserName(editUser.editItem.user_name)
@@ -123,7 +135,7 @@ const Users = () => {
     //     color: 'danger',
     //     message: 'Password can not be empty',
     //   })
-    // } 
+    // }
     else if (role.length === 0) {
       setToast({
         visible: true,
@@ -138,15 +150,38 @@ const Users = () => {
     console.log('onSubmit called', onValidate())
     if (onValidate()) {
       const data = {
-        //user_id: userData[userData.length - 1].user_id + 1, //for api call user_id is not required
+        user_id: userState.usersList.users[userState.usersList.users.length - 1].user_id + 1, //for api call user_id is not required
         user_name: userName,
         user_number: mobileNo,
         user_email: email,
-       // password: password,
+        // password: password,
         role_name: role,
       }
       console.log('add user data', data)
-      userData.push(data)
+      //userData.push(data);
+      try {
+        setLoading(true)
+        const res = await addUser(data)
+        console.log('Add user res', res?.data)
+        if (res?.data) {
+          setLoading(false)
+          setToast({
+            visible: true,
+            color: 'success',
+            message: 'User added successfully',
+          })
+          dispatch(getAllUsers())
+          setTimeout(() => onClickBack(), 1000)
+        }
+      } catch (error) {
+        console.log('error adding user', error)
+        setLoading(false)
+        setToast({
+          visible: true,
+          color: 'danger',
+          message: error.message ? error.message : 'Something went wrong',
+        })
+      }
     }
   }
   const onUpdate = async (id) => {
@@ -179,17 +214,19 @@ const Users = () => {
     <>
       <CRow>
         <CCol xs>
-           {currentScreen === 0 && (
+          {currentScreen === 0 && (
             <UsersScreen
               onClickAddUserBtn={onClickAddNew}
               editUser={editUser}
               setEditUser={setEditUser}
               setCurrentScreen={setCurrentScreen}
-              onClickViewBtn ={onClickViewBtn }
-              onClickEditBtn ={onClickEditBtn}
+              onClickViewBtn={onClickViewBtn}
+              onClickEditBtn={onClickEditBtn}
               onClickDeleteBtn={onClickDeleteBtn}
-           />
-          )} 
+              userState={userState}
+              
+            />
+          )}
           {currentScreen === 1 && (
             <UserForm
               onClickBack={onClickBack}
@@ -210,7 +247,7 @@ const Users = () => {
               editUser={editUser}
             />
           )}
-          {currentScreen === 2 && <ViewUser onClickBack={onClickBack} editUser={editUser} />}
+          {/* {currentScreen === 2 && <ViewUser onClickBack={onClickBack} editUser={editUser} />} */}
 
           <CToast
             autohide={false}
@@ -232,5 +269,5 @@ const Users = () => {
 export default Users
 
 Users.propTypes = {
-  editUser:PropTypes.object,
+  editUser: PropTypes.object,
 }

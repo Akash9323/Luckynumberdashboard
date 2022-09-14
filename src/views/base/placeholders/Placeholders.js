@@ -55,7 +55,11 @@ const Placeholders = () => {
                     focusable="false"
                   >
                     <title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="#868e96"></rect>
+                    <rect
+                      width="100%"
+                      height="100%"
+                      //fill="#868e96"
+                    ></rect>
                   </CCardImage>
                   <CCardBody>
                     <CPlaceholder component={CCardTitle} animation="glow" xs={7}>

@@ -1,17 +1,28 @@
 /* eslint-disable prettier/prettier */
 
-import React from 'react'
-import {  cilArrowThickLeft } from '@coreui/icons'
+import React, { useEffect } from 'react'
+import { cilArrowThickLeft } from '@coreui/icons'
 import {
-    CCard,
-    CCardHeader,
-    //CIcon,
-    CCardBody,
-
+  CCard,
+  CCardHeader,
+  //CIcon,
+  CCardBody,
 } from '@coreui/react'
-import CIcon from '@coreui/icons-react';
+import CIcon from '@coreui/icons-react'
 import PropTypes from 'prop-types'
-const ViewUser = ({onClickBack,editUser}) => {
+import { useNavigate, useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { getUserDataById } from 'src/redux/actions/user.action'
+import SkeletonLoader from 'src/components/loader/SkeletonLoader'
+const ViewUser = () => {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  let { userId } = useParams()
+  const state = useSelector((state) => state.user)
+
+  useEffect(() => {
+    dispatch(getUserDataById(userId))
+  }, [dispatch])
   return (
     <CCard className="mb-4">
       <CCardHeader>
@@ -24,16 +35,22 @@ const ViewUser = ({onClickBack,editUser}) => {
             cursor: 'pointer',
           }}
           icon={cilArrowThickLeft}
-          onClick={onClickBack}
+          onClick={() => navigate(`/users`)}
           //customClassName="nav-icon"
         />
         User Details
       </CCardHeader>
       <CCardBody>
-       <div>{editUser.editItem.user_name}</div>
-       <div>{editUser.editItem.user_email}</div>
-       <div>{editUser.editItem.user_number}</div>
-       <div>{editUser.editItem.role_name}</div>
+        {state.singleUserData.loading ? (
+          SkeletonLoader()
+        ) : (
+          <>
+            <div>{state.singleUserData.user[0]?.user_name}</div>
+            <div>{state.singleUserData.user[0]?.user_email}</div>
+            <div>{state.singleUserData.user[0]?.user_number}</div>
+            <div>{state.singleUserData.user[0]?.role_name}</div>
+          </>
+        )}
       </CCardBody>
     </CCard>
   )
@@ -42,6 +59,6 @@ const ViewUser = ({onClickBack,editUser}) => {
 export default ViewUser
 
 ViewUser.propTypes = {
-  onClickBack:PropTypes.any,
-  editUser:PropTypes.object,
+  // onClickBack:PropTypes.any,
+  // editUser:PropTypes.object,
 }

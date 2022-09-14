@@ -1,0 +1,15 @@
+.skeleton{
+   /* // transition: all 0.3s; */
+    animation: pulse 2s ease infinite !important;
+
+}
+@keyframes pulse {
+    from {
+      opacity: 0.2;
+      /* background-color: aqua; */
+    }
+   
+   to {
+     opacity: 1;
+    }
+  }

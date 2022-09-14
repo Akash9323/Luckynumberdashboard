@@ -21,14 +21,14 @@ import {
   CTableRow,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-import { 
+import {
   cilPeople,
-   cilTrash,
-    cilPen,
-     //cilEye,
-     cilEyedropper,
-     } from '@coreui/icons'
-import { userData } from './user.service'
+  cilTrash,
+  cilPen,
+  //cilEye,
+  cilEyedropper,
+} from '@coreui/icons'
+import SkeletonLoader from 'src/components/loader/SkeletonLoader'
 
 const UsersScreen = ({
   setCurrentScreen,
@@ -36,13 +36,17 @@ const UsersScreen = ({
   editUser,
   setEditUser,
   onClickViewBtn,
- onClickEditBtn,
-//  onClickDeleteBtn,
+  onClickEditBtn,
+  userState,
+  onClickDeleteBtn,
 }) => {
   const [searchedText, setSearchedText] = useState('')
   const [searchData, setSearchData] = useState([])
   //const pageCount= Math.ceil(userData.length/10);
   //console.log('props', props)
+  const users = localStorage.getItem('luckyNumber_User')
+  const user = JSON.parse(users)
+  const isUser = user.user_email === 'luckynumber.user@gmail.com' && user.password === 'user@123'
   return (
     <>
       <CCard className="mb-4">
@@ -53,9 +57,10 @@ const UsersScreen = ({
             color="primary"
             onClick={() => {
               console.log('click add')
-               //setCurrentScreen(1)
-               onClickAddUserBtn();
+              //setCurrentScreen(1)
+              onClickAddUserBtn()
             }}
+            disabled={isUser}
           >
             Add User
           </CButton>
@@ -65,94 +70,101 @@ const UsersScreen = ({
             type="search"
             placeholder="Search user by name or email"
             style={{ marginBottom: '16px' }}
-            onChange={(e) => {
-              setSearchedText(e.target.value)
-              console.log("e.target", e.target.value)
-              const filteredData = userData.filter(
-                (i) =>
-                  i.user_name.toLowerCase().includes(e.target.value.toLowerCase()) ||
-                  i.user_email.toLowerCase().includes(e.target.value.toLowerCase()),
-              )
-              setSearchData(filteredData)
-            }}
+            // onChange={(e) => {
+            //   setSearchedText(e.target.value)
+            //   console.log("e.target", e.target.value)
+            //   const filteredData = userData.filter(
+            //     (i) =>
+            //       i.user_name.toLowerCase().includes(e.target.value.toLowerCase()) ||
+            //       i.user_email.toLowerCase().includes(e.target.value.toLowerCase()),
+            //   )
+            //   setSearchData(filteredData)
+            // }}
           />
-          <CTable align="middle" className="mb-0 border" hover responsive>
-            <CTableHead color="light">
-              <CTableRow>
-                <CTableHeaderCell className="text-center">
-                  <CIcon icon={cilPeople} />
-                </CTableHeaderCell>
-                <CTableHeaderCell>Name</CTableHeaderCell>
-                <CTableHeaderCell className="text-center">Phone Number</CTableHeaderCell>
-                <CTableHeaderCell className="text-center">Email Id</CTableHeaderCell>
-                <CTableHeaderCell className="text-center">Role</CTableHeaderCell>
-                <CTableHeaderCell className="text-center">Action</CTableHeaderCell>
-              </CTableRow>
-            </CTableHead>
-            <CTableBody>
-              {(searchedText !== '' ? searchData : userData).map((item, index) => (
-                <CTableRow v-for="item in tableItems" key={index}>
-                  <CTableDataCell className="text-center">
-                    <CAvatar size="md" src="../../assets/images/avatars/1.jpg">
-                      {item.user_name.split(' ')[0][0]}
-                    </CAvatar>
-                  </CTableDataCell>
-                  <CTableDataCell>
-                    <div>{item.user_name}</div>
-                  </CTableDataCell>
-                  <CTableDataCell>
-                    <div className="small text-center">{item.user_number}</div>
-                  </CTableDataCell>
-                  <CTableDataCell className="text-center">
-                    <div>{item.user_email}</div>
-                  </CTableDataCell>
-                  <CTableDataCell className="text-center">
-                    <div>{item.role_name}</div>
-                  </CTableDataCell>
-                  <CTableDataCell className="text-center">
-                    <div>
-                      <CIcon
-                        style={{
-                          height: '20px',
-                          width: '20px',
-                          color: 'black',
-                          cursor: 'pointer',
-                        }}
-                        icon={cilEyedropper}
-                        customClassName="nav-icon"
-                        onClick={()=>onClickViewBtn(item)}
-                      />
-                      <CIcon
-                        style={{
-                          height: '20px',
-                          width: '20px',
-                          margin: '0 12px',
-                          color: 'blue',
-                          cursor: 'pointer',
-                        }}
-                        icon={cilPen}
-                        customClassName="nav-icon"
-                        onClick={() => {
-              console.log('clicked');
-              onClickEditBtn(item);
-            }}
-                      />
-                      <CIcon
-                        style={{
-                          height: '20px',
-                          width: '20px',
-                          color: 'red',
-                          cursor: 'pointer',
-                        }}
-                        icon={cilTrash}
-                        customClassName="nav-icon"
-                      />
-                    </div>
-                  </CTableDataCell>
-                </CTableRow>
-              ))}
-            </CTableBody>
-          </CTable>
+          {userState.usersList.loading ? (
+            SkeletonLoader()
+          ) : (
+            <div style={{ overflowX: 'auto', height: '48vh', marginTop: '16px' }}>
+              <CTable align="middle" className="mb-0 border" hover responsive>
+                <CTableHead color="light">
+                  <CTableRow>
+                    <CTableHeaderCell className="text-center">
+                      <CIcon icon={cilPeople} />
+                    </CTableHeaderCell>
+                    <CTableHeaderCell>Name</CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">Phone Number</CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">Email Id</CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">Role</CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">Action</CTableHeaderCell>
+                  </CTableRow>
+                </CTableHead>
+                <CTableBody style={{ height: '300px', overflowY: 'auto' }}>
+                  {(searchedText !== '' ? searchData : userState.usersList.users).map(
+                    (item, index) => (
+                      <CTableRow v-for="item in tableItems" key={index}>
+                        <CTableDataCell className="text-center">
+                          <CAvatar size="md" src="../../assets/images/avatars/1.jpg">
+                            {item.user_name.split(' ')[0][0]}
+                          </CAvatar>
+                        </CTableDataCell>
+                        <CTableDataCell>
+                          <div>{item.user_name}</div>
+                        </CTableDataCell>
+                        <CTableDataCell>
+                          <div className="small text-center">{item.user_number}</div>
+                        </CTableDataCell>
+                        <CTableDataCell className="text-center">
+                          <div>{item.user_email}</div>
+                        </CTableDataCell>
+                        <CTableDataCell className="text-center">
+                          <div>{item.role_name}</div>
+                        </CTableDataCell>
+                        <CTableDataCell className="text-center">
+                          <div>
+                            <CIcon
+                              style={{
+                                height: '20px',
+                                width: '20px',
+                                color: 'black',
+                                cursor: 'pointer',
+                              }}
+                              icon={cilEyedropper}
+                              customClassName="nav-icon"
+                              onClick={() => onClickViewBtn(item)}
+                            />
+                            <CIcon
+                              style={{
+                                height: '20px',
+                                width: '20px',
+                                margin: '0 12px',
+                                color: isUser ? 'grey' : 'blue',
+                                cursor: isUser ? 'auto' : 'pointer',
+                              }}
+                              icon={cilPen}
+                              customClassName="nav-icon"
+                              onClick={() => (isUser ? null : onClickEditBtn(item))}
+                            />
+                            <CIcon
+                              style={{
+                                height: '20px',
+                                width: '20px',
+                                color: isUser ? 'grey' : 'red',
+                                cursor: isUser ? 'auto' : 'pointer',
+                              }}
+                              icon={cilTrash}
+                              customClassName="nav-icon"
+                              onClick={() => (isUser ? null : onClickDeleteBtn(item))}
+                            />
+                          </div>
+                        </CTableDataCell>
+                      </CTableRow>
+                    ),
+                  )}
+                </CTableBody>
+              </CTable>
+            </div>
+          )}
+          {/*  */}
           <CPagination
             align="end"
             aria-label="Page navigation example"
@@ -182,13 +194,13 @@ const UsersScreen = ({
 export default UsersScreen
 
 UsersScreen.propTypes = {
-  setCurrentScreen:PropTypes.any,
-  onClickAddUserBtn:PropTypes.any,
-  editUser:PropTypes.object,
-  setEditUser:PropTypes.any,
-  onClickViewBtn:PropTypes.any,
-  onClickEditBtn:PropTypes.any,
-  onClickDeleteBtn:PropTypes.any,
+  setCurrentScreen: PropTypes.any,
+  onClickAddUserBtn: PropTypes.any,
+  editUser: PropTypes.object,
+  setEditUser: PropTypes.any,
+  onClickViewBtn: PropTypes.any,
+  onClickEditBtn: PropTypes.any,
+  onClickDeleteBtn: PropTypes.any,
+  userState: PropTypes.any,
+  user: PropTypes.any,
 }
-
-
