@@ -102,15 +102,15 @@ const _nav = [
       color: 'info',
     },
   },
-  {
-    component: CNavItem,
-    name: 'Region',
-    to: '/region',
-    icon: <CIcon icon={ cilChartPie} customClassName="nav-icon" />,
-    badge: {
-      color: 'info',
-    },
-  },
+  // {
+  //   component: CNavItem,
+  //   name: 'Region',
+  //   to: '/region',
+  //   icon: <CIcon icon={ cilChartPie} customClassName="nav-icon" />,
+  //   badge: {
+  //     color: 'info',
+  //   },
+  // },
   {
     component: CNavItem,
     name: 'Profile',

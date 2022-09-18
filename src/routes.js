@@ -1,14 +1,14 @@
 /* eslint-disable prettier/prettier */
 
 import React from 'react'
-import Game from './views/game/game'
+import Game from './views/game'
 import Items from './views/item'
 import Luckycoinstore from './views/luckycoinstore/luckycoinstore'
 import Players from './views/player/playersScreen'
 import Profile from './views/profile/profile'
 import Question from './views/question/question'
-import Randomnumber from './views/randomnumber/randomnumber'
-import Region from './views/region/region'
+import Randomnumber from './views/randomnumber'
+//import Region from './views/region/region'
 import Users from './views/user'
 import ViewUser from './views/user/viewUser'
 //import Users from './views/user/users'
@@ -74,7 +74,7 @@ const routes = [
   { path: '/game', name: 'Game', element: Game},
   { path: '/wallet', name: 'Wallet', element: Wallet },
   { path: '/profile', name: 'Profile', element: Profile },
-  { path: '/region', name: 'Region', element: Region },
+  //{ path: '/region', name: 'Region', element: Region },
   { path: '/randomnumbers', name: 'Randomnumbers', element: Randomnumber },
   { path: '/question', name: 'Question', element: Question },
   { path: '/luckycoinstore', name: 'Luckycoinstore', element: Luckycoinstore },

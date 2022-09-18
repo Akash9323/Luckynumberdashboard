@@ -5,22 +5,25 @@ import React, { useEffect, useState } from 'react'
 import { CAlert, CCol, CRow, CToast, CToastBody } from '@coreui/react'
 
 import PropTypes from 'prop-types'
-import ItemsScreen from './itemsScreen'
-import { itemsData } from './item.service'
-import ItemsForm from './itemsForm'
-import ViewItems from './viewItems'
+import { gameData } from './game.service'
+import ViewGame from './viewGame'
+import GameForm from './gameForm'
+import GameScreen from './gameScreen'
+// import ItemsScreen from './itemsScreen'
+// import { itemsData } from './item.service'
+// import ItemsForm from './itemsForm'
+// import ViewItems from './viewItems'
 
-const Items = () => {
+const Game = () => {
   const [currentScreen, setCurrentScreen] = useState(0)
-  const [itemsName, setItemsName] = useState('')
-  const [Description, setDescription] = useState('')
-  const [price, setPrice] = useState('')
-  const [qty, setQty] = useState('');
-  const [category, setCategory] = useState('');
-  const [purchasetype, setPurchasetype] = useState('');
+  const [gameName, setGameName] = useState('')
+  const [Date, setDate] = useState('')
+  const [Time, settime] = useState('')
+  const [Details, setDetails] = useState('');
+  
 
 
-  const [editItems, setEditItems] = useState({
+  const [editGame, setEditGame] = useState({
     isEditing: false,
     editItem: null,
   })
@@ -33,33 +36,28 @@ const Items = () => {
   // const [rowsPerPage, setRowsPerPage] = useState(5);
   const onClickAddNew = () => {
     
-    setEditItems({ isEditing: false, editItem: null })
+    setEditGame({ isEditing: false, editItem: null })
     onDiscard()
     setCurrentScreen(1);
-    console.log('edit items from onclicknew',editItems)
+    console.log('edit items from onclicknew',editGame)
   }
   const onClickBack = () => {
     onDiscard();
     setCurrentScreen(0);
   }
-  const onChangeItemsName = (e) => {
-    setItemsName(e.target.value)
+  const onChangeGameName = (e) => {
+    setGameName(e.target.value)
   }
-  const onChangeDescription = (e) => {
-    setDescription(e.target.value)
+  const onChangeDate= (e) => {
+    setDate(e.target.value)
   }
-  const onChangePrice = (e) => {
-    setPrice(e.target.value)
+  const onChangeTime = (e) => {
+    setTime(e.target.value)
   }
-  const onChangeQty = (e) => {
-    setQty(e.target.value)
+  const onChangeDetails = (e) => {
+    setDetails(e.target.value)
   }
-  const onChangeCategory = (e) => {
-    setCategory(e.target.value)
-  }
-  const onChangePurchasetype = (e) => {
-    setPurchasetype(e.target.value)
-  }
+  
   // const onChangePassword = (e) => {
   //   setPassword(e.target.value)
   // }
@@ -67,56 +65,53 @@ const Items = () => {
   //   console.log('role', e.target.value)
   //   setRole(e.target.value)
   // }
-  const onClickViewBtn = (editItemsData) => {
+  const onClickViewBtn = (editGameData) => {
     //console.log('data coming for editing', editUserData)
-    setEditItems({ isEditing: false, editItem: editItemsData })
+    setEditGame({ isEditing: false, editItem: editGameData })
     setCurrentScreen(2);
   }
-  const onClickEditBtn = (editItemsData) => {
+  const onClickEditBtn = (editGameData) => {
     //console.log('data coming for editing', editUserData)
-    setEditItems({ isEditing: true, editItem: editItemsData })
+    setEditGame({ isEditing: true, editItem: editGameData })
     setCurrentScreen(1)
   }
   const onClickDeleteBtn = (id) => {
     //console.log('data coming for editing', editUserData)
-    itemsData.splice(id, 1);
+    gameData.splice(id, 1);
     setToast({
       visible: true,
       color: 'success',
-      message: 'items deleted successfully',
+      message: 'game deleted successfully',
     })
   }
 
   const onOpenEditItems = () => {
-    setItemsName(editItems.editItem.items_name)
-    setDescription(editItems.editItem.items_description)
-    setPrice(editItems.editItem.items_price)
+    setGameName(editGame.editItem.game_name)
+    setDate(editGame.editItem.game_date)
+    setTime(editGame.editItem.game_time)
     //setPassword(editUser.editItem.password)
-    setQty(editItems.editItem.items_qty)
-    setCategory(editItems.editItem.items_category)
+    setDetails(editGame.editItem.game_details)
   }
   const onDiscard = () => {
-    setItemsName('')
-    setDescription('')
-    setPrice('')
+    setGameName('')
+    setDate('')
+    setTime('')
     // setPassword('')
-    setQty('')
-    setCategory('')
-    setPurchasetype('')
+    setDetails('')
   }
   const onValidate = () => {
    // const emailRegex = /\S+@\S+\.\S+/
-    if (itemsName === '') {
+    if (gameName === '') {
       setToast({
         visible: true,
         color: 'error',
-        message: 'Items name can not be empty',
+        message: 'Game name can not be empty',
       })
-    } else if (Description === '') {
+    } else if (Date === '') {
       setToast({
         visible: true,
         color: 'danger',
-        message: 'description name can not be empty',
+        message: 'Date  can not be empty',
       })
     // } else if (emailRegex.test(email) === false) {
     //   setToast({
@@ -124,34 +119,21 @@ const Items = () => {
     //     color: 'danger',
     //     message: 'Invalid Email',
     //   })
-    } else if (price === '') {
+    } else if (Time === '') {
       setToast({
         visible: true,
         color: 'danger',
-        message: 'price can not be empty',
+        message: 'Time can not be empty',
       })
     }
-    else if (qty === '') {
+    else if (Details === '') {
       setToast({
         visible: true,
         color: 'danger',
-        message: 'qty can not be empty',
+        message: 'details can not be empty',
       })
     }
-    else if (category === '') {
-      setToast({
-        visible: true,
-        color: 'danger',
-        message: 'category can not be empty',
-      })
-    }
-    else if (purchasetype === '') {
-      setToast({
-        visible: true,
-        color: 'danger',
-        message: 'purchasetype can not be empty',
-      })
-    }
+    
     //  else if (password === '') {
     //   setToast({
     //     visible: true,
@@ -175,35 +157,37 @@ const Items = () => {
     if (onValidate()) {
       const data = {
         //user_id: userData[userData.length - 1].user_id + 1, //for api call user_id is not required
-        items_name: itemsName,
-        items_description:Description,
-        items_price: price,
+        game_name: gameName,
+        game_date:Date,
+        game_time: Time,
+        game_details: Details,
+
        // password: password,
         //role_name: role,
       }
-      console.log('add items data', data)
-      itemsData.push(data)
+      console.log('add game data', data)
+      gameData.push(data)
     }
   }
   const onUpdate = async (id) => {
     if (onValidate()) {
       const data = {
-        items_id: id,
-        items_name: itemsName,
-        items_description: Description,
-        items_price: price,
+        game_id: id,
+        game_name: gameName,
+        game_date: Date,
+        game_time:Time,
+        game_details: Details,
         // password: password,
         //role_name: role,
       } //this data will required for api-call
 
-      for (const obj of itemsData) {
+      for (const obj of gameData) {
         if (obj.id === id) {
-          obj.items_id = id
-          obj.items_name = itemsName
-          obj.items_description = Description
-          obj.items_price = price
-          obj.qty = qty
-
+          obj.game_id = id
+          obj.game_name = gameName
+          obj.game_date = Date
+          obj.game_time = Time
+          obj.game_details = Details
           break
         }
       }
@@ -216,10 +200,10 @@ const Items = () => {
       <CRow>
         <CCol xs>
            {currentScreen === 0 && (
-            <ItemsScreen
-              onClickAddUserBtn={onClickAddNew}
-              editUser={editItems}
-              setEditUser={setEditItems}
+            <GameScreen
+              onClickAddGameBtn={onClickAddNew}
+              editGame={editGame}
+              setEditGame={setEditGame}
               setCurrentScreen={setCurrentScreen}
               onClickViewBtn ={onClickViewBtn }
               onClickEditBtn ={onClickEditBtn}
@@ -227,26 +211,23 @@ const Items = () => {
            />
           )} 
           {currentScreen === 1 && (
-            <ItemsForm
+            <GameForm
               onClickBack={onClickBack}
               onSubmit={onSubmit}
               onUpdate={onUpdate}
               onDiscard={onDiscard}
-              onChangeItemsName={onChangeItemsName}
-              onChangeDescription={onChangeDescription}
-              onChangePrice={onChangePrice}
-              //onChangePassword={onChangePassword}
-             // onChangeRole={onChangeRole}
-              onOpenEditItems={onOpenEditItems}
-              itemsName={itemsName}
-              description={Description}
-              price={price}
-              //password={password}
-              //role={role}
-              editItems={editItems}
+              onChangeGameName={onChangeGameName}
+              onChangeDate={onChangeDate}
+              onChangeTime={onChangeTime}
+              onChangeDetails={onChangeDetails}
+              //onOpenEditGame={onOpenEditGame}
+              gameName={gameName}
+              date={Date}
+              Time={Time}
+              editGame={editGame}
             />
           )}
-          {currentScreen === 2 && <ViewItems onClickBack={onClickBack} editItems={editItems} />}
+          {currentScreen === 2 && <ViewGame onClickBack={onClickBack} editItems={editGame} />}
 
           <CToast
             autohide={false}
@@ -265,8 +246,9 @@ const Items = () => {
   )
 }
 
-export default Items
+export default Game
 
-Items.propTypes = {
-  editItems:PropTypes.object,
+Game.propTypes = {
+  editGame:PropTypes.object,
+  onOpenEditGame:PropTypes.object,
 }

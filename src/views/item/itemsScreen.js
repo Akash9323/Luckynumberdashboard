@@ -1,7 +1,5 @@
 /* eslint-disable prettier/prettier */
 
-
-/* eslint-disable prettier/prettier */
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import {
@@ -102,7 +100,10 @@ const ItemsScreen = ({
                     </CAvatar>
                   </CTableDataCell>
                   <CTableDataCell>
-                    <div>{item.items_description}</div>
+                    <div>{item.items_name}</div>
+                  </CTableDataCell>
+                  <CTableDataCell>
+                    <div className="small text-center">{item.items_description}</div>
                   </CTableDataCell>
                   <CTableDataCell>
                     <div className="small text-center">{item.items_price}</div>
@@ -112,6 +113,9 @@ const ItemsScreen = ({
                   </CTableDataCell>
                   <CTableDataCell className="text-center">
                     <div>{item.items_category}</div>
+                  </CTableDataCell>
+                  <CTableDataCell className="text-center">
+                    <div>{item.items_purchasetype}</div>
                   </CTableDataCell>
                   <CTableDataCell className="text-center">
                     <div>
@@ -194,17 +198,3 @@ ItemsScreen.propTypes = {
   onClickEditBtn:PropTypes.any,
   onClickDeleteBtn:PropTypes.any,
 }
-
-
-
-// import React from 'react'
-
-// const itemsScreen = () => {
-//   return (
-//     <div>
-//     <h1>itemsScreen</h1>
-//     </div>
-//   )
-// }
-
-// export default itemsScreen

@@ -1,6 +1,4 @@
 /* eslint-disable prettier/prettier */
-
-/* eslint-disable prettier/prettier */
 import React from 'react'
 
 import {
@@ -32,8 +30,6 @@ import {
   //cilDelete,
 } from '@coreui/icons'
 import { walletData } from './wallet.service'
-
-
 
 const Wallet = () => {
   //
