@@ -18,7 +18,7 @@ const Game = () => {
   const [currentScreen, setCurrentScreen] = useState(0)
   const [gameName, setGameName] = useState('')
   const [Date, setDate] = useState('')
-  const [Time, settime] = useState('')
+  const [Time, setTime] = useState('')
   const [Details, setDetails] = useState('');
   
 
