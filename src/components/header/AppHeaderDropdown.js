@@ -63,7 +63,12 @@ const AppHeaderDropdown = () => {
           Profile
         </CDropdownItem>
         <CDropdownDivider />
-        <CDropdownItem onClick={() => localStorage.removeItem('luckyNumber_User')}>
+        <CDropdownItem
+          onClick={() => {
+            localStorage.removeItem('luckyNumber_User')
+            window.location.reload()
+          }}
+        >
           <CIcon icon={cilLockLocked} className="me-2" />
           Logout
         </CDropdownItem>

@@ -57,7 +57,7 @@ import {
           {editGame.isEditing ? 'Edit Game' : 'Add Game'}
         </CCardHeader>
         <CCardBody>
-          <CRow xs={{ gutterY: 2 }}>
+          <CRow xs={{ gutterY: 3 }}>
             <CCol sm={12} md={6}>
               <CForm>
                 <CFormLabel htmlFor="exampleFormControlInput1">Game Name</CFormLabel>
@@ -96,6 +96,8 @@ import {
                   onChange={onChangeTime}
                 />
               </CForm>
+              </CCol>
+              <CCol sm={12} md={6}>
               <CForm>
                 <CFormLabel htmlFor="exampleFormControlInput1">Game Details</CFormLabel>
                 <CFormInput
@@ -107,11 +109,40 @@ import {
                   onChange={onChangeDetails}
                 />
               </CForm>
-            </CCol>
+              </CCol>
+              <CCol sm={12} md={6}>
+              <CForm>
+                <CFormLabel htmlFor="exampleFormControlInput1">Winning No</CFormLabel>
+                <CFormInput
+                  type="text"
+                  size="lg"
+                  placeholder="Winning No"
+                  required
+                  value={Details}
+                  onChange={onChangeDetails}
+                />
+              </CForm>
+              </CCol>
+              <CCol sm={12} md={6}>
+              <CForm>
+                <CFormLabel htmlFor="exampleFormControlInput1">Winning Ratio</CFormLabel>
+                <CFormInput
+                  type="text"
+                  size="lg"
+                  placeholder="Winning Ratio"
+                  required
+                  value={Details}
+                  onChange={onChangeDetails}
+                />
+              </CForm>
+              </CCol>
+           
           
           </CRow>
           <hr />
+          <div style={{display:'flex',justifyContent:'flex-end'}}>
           <CButton onClick={editGame.isEditing ? onUpdate : onSubmit}>Submit</CButton>
+          </div>
         </CCardBody>
       </CCard>
     )

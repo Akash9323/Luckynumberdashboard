@@ -43,7 +43,7 @@ const PlayersScreen = ({
           <CCard className="mb-4">
             <CCardHeader>
               Player Details
-              <CButton
+              {/* <CButton
                 style={{ marginLeft: '12px' }}
                 color="primary"
                 onClick={() => {
@@ -53,7 +53,7 @@ const PlayersScreen = ({
                 }}
               >
                 Add Player
-              </CButton>
+              </CButton> */}
             </CCardHeader>
             <CCardBody>
               <CFormInput
@@ -76,10 +76,10 @@ const PlayersScreen = ({
                     <CTableHeaderCell className="text-center">
                       <CIcon icon={cilPeople} />
                     </CTableHeaderCell>
-                    <CTableHeaderCell>Name</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Address</CTableHeaderCell>
-                    {/* <CTableHeaderCell className="text-center">user Id</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Wallet Id</CTableHeaderCell> */}
+                    <CTableHeaderCell>User Name</CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">Phone No</CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">Account Created Date</CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">Coins Hold</CTableHeaderCell>
                     <CTableHeaderCell className="text-center">Referred By</CTableHeaderCell>
                     {/* <CTableHeaderCell className="text-center">Gameplayer</CTableHeaderCell> */}
                     <CTableHeaderCell className="text-center">Action</CTableHeaderCell>
@@ -97,14 +97,14 @@ const PlayersScreen = ({
                         <div>{item.player_name}</div>
                       </CTableDataCell>
                       <CTableDataCell>
-                        <div className="small text-center">{item.player_address}</div>
-                      </CTableDataCell>
-                      {/* <CTableDataCell className="text-center">
-                        <div>{item.user_id}</div>
+                        <div className="small text-center">{item.player_phone_no}</div>
                       </CTableDataCell>
                       <CTableDataCell className="text-center">
-                        <div>{item.wallet_id}</div>
-                      </CTableDataCell> */}
+                        <div>{item.created_at}</div>
+                      </CTableDataCell>
+                      <CTableDataCell className="text-center">
+                        <div>{item.coins_hold}</div>
+                      </CTableDataCell>
                       <CTableDataCell className="text-center">
                         <div>{item.referred_by}</div>
                       </CTableDataCell>
@@ -129,15 +129,16 @@ const PlayersScreen = ({
                               height: '20px',
                               width: '20px',
                               margin: '0 12px',
-                              color: 'blue',
-                              cursor: 'pointer',
+                              color: 'grey',
+                              //cursor: 'pointer',
                             }}
+                            
                             icon={cilPen}
                             customClassName="nav-icon"
-                            onClick={() => {
-                              console.log('clicked')
-                              onClickEditBtn(item)
-                            }}
+                            // onClick={() => {
+                            //   console.log('clicked')
+                            //   //onClickEditBtn(item)
+                            // }}
                           />
                           <CIcon
                             style={{

@@ -83,27 +83,32 @@ const GameScreen = ({
               <CTable align="middle" className="mb-0 border" hover responsive>
                 <CTableHead color="light">
                   <CTableRow>
-                    <CTableHeaderCell className="text-center">
+                    {/* <CTableHeaderCell className="text-center">
                       <CIcon icon={cilPeople} />
-                    </CTableHeaderCell>
-                    <CTableHeaderCell>Game Name</CTableHeaderCell>
+                    </CTableHeaderCell> */}
+                 
                     <CTableHeaderCell className="text-center">Game Date</CTableHeaderCell>
                     <CTableHeaderCell className="text-center">Game Time</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Game Details</CTableHeaderCell>
+                    <CTableHeaderCell>Winning No</CTableHeaderCell>
+                    <CTableHeaderCell>Total Cards Generated</CTableHeaderCell>
+                    <CTableHeaderCell>Total Winning Cards</CTableHeaderCell>
+                    <CTableHeaderCell>Win Ratio</CTableHeaderCell>
+                    <CTableHeaderCell>Is Running</CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">Game End At</CTableHeaderCell>
                     <CTableHeaderCell className="text-center">Action</CTableHeaderCell>
                   </CTableRow>
                 </CTableHead>
                 <CTableBody>
                   {gameData.map((item, index) => (
                     <CTableRow v-for="item in tableItems" key={index}>
-                      <CTableDataCell className="text-center">
+                      {/* <CTableDataCell className="text-center">
                         <CAvatar size="md" src="../../assets/images/avatars/1.jpg">
                           {item.game_name.split(' ')[0][0]}
                         </CAvatar>
-                      </CTableDataCell>
-                      <CTableDataCell>
+                      </CTableDataCell> */}
+                      {/* <CTableDataCell>
                         <div>{item.game_name}</div>
-                      </CTableDataCell>
+                      </CTableDataCell> */}
                       <CTableDataCell>
                         <div className="small text-center">{item.game_date}</div>
                       </CTableDataCell>
@@ -111,7 +116,22 @@ const GameScreen = ({
                         <div>{item.game_time}</div>
                       </CTableDataCell>
                       <CTableDataCell className="text-center">
-                        <div>{item.game_details_id}</div>
+                        <div>{item.winning_no}</div>
+                      </CTableDataCell>
+                      <CTableDataCell className="text-center">
+                        <div>{item.total_card_generated}</div>
+                      </CTableDataCell>
+                      <CTableDataCell className="text-center">
+                        <div>{item.total_winning_card}</div>
+                      </CTableDataCell>
+                      <CTableDataCell className="text-center">
+                        <div>{item.win_ratio}</div>
+                      </CTableDataCell>
+                      <CTableDataCell className="text-center">
+                        <div>{item.isRunning}</div>
+                      </CTableDataCell>
+                      <CTableDataCell className="text-center">
+                        <div>{item.game_end_date}</div>
                       </CTableDataCell>
                       <CTableDataCell className="text-center">
                         <div>
